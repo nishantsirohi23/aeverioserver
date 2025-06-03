@@ -1,0 +1,14 @@
+2025-06-02 23:01:15 [[31merror[39m]: 	MongoDB Connection Error: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
+2025-06-02 23:01:58 [[31merror[39m]: 	Error fetching contacts
+{
+  "error": "Operation `contacts.find()` buffering timed out after 10000ms"
+}
+2025-06-02 23:02:01 [[31merror[39m]: 	Error creating contact
+{
+  "error": "Contact validation failed: mobile: Please provide a valid 10-digit mobile number"
+}
+2025-06-02 23:02:02 [[31merror[39m]: 	Error creating contact
+{
+  "error": "Contact validation failed: mobile: Please provide a valid 10-digit mobile number"
+}
+2025-06-02 23:02:04 [[31merror[39m]: 	MongoDB Connection Error: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
