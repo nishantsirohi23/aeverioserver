@@ -37,11 +37,11 @@ app.use('/api/packages', packageRoutes);
 
 app.get('/health', (req, res) => {
   logger.info('✅ Health check endpoint hit');
-  res.status(200).json({ status: 'UP', message: 'Server is healthy 🚀' });
+  res.status(200).json({ status: 'UP', message: 'Server is healthy 🚀 asdf adfasfdasdfasdf' });
 });
 
 app.get('/', (req, res) => {
-  res.send('🚀 Welcome to the Node.js API Server - Deployed and Running');
+  res.send('🚀 Welcome to the Node.js API Server - Deployed and Running asdfasdfasdfasdf');
 });
 
 // === Error Handling ===
