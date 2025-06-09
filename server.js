@@ -12,9 +12,9 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
+// === Middleware ===
 const corsOptions = {
-  origin: '*', // Allow all origins
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 200
@@ -24,29 +24,33 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan('dev'));
 app.use((req, res, next) => {
-  logger.info(`Incoming Request: ${req.method} ${req.url}`);
+  logger.info(`➡️  Incoming Request: ${req.method} ${req.url}`);
   next();
 });
 
-// Database Connection
+// === Database Connection ===
 connectDB();
 
-// Routes
+// === Routes ===
 app.use('/api/contacts', contactRoutes);
 app.use('/api/packages', packageRoutes);
-// Health Check
+
 app.get('/health', (req, res) => {
-  logger.info('Health check endpoint hit');
-  res.status(200).json({ status: 'UP' });
+  logger.info('✅ Health check endpoint hit');
+  res.status(200).json({ status: 'UP', message: 'Server is healthy 🚀' });
 });
 
-// Error Handling Middleware
+app.get('/', (req, res) => {
+  res.send('🚀 Welcome to the Node.js API Server - Deployed and Running');
+});
+
+// === Error Handling ===
 app.use((err, req, res, next) => {
-  logger.error(`Error: ${err.message}`);
+  logger.error(`❌ Error: ${err.message}`);
   res.status(500).json({ error: 'Internal Server Error' });
 });
 
-// Start Server
+// === Start Server ===
 app.listen(PORT, '0.0.0.0', () => {
-  logger.info(`Server running on http://0.0.0.0:${PORT}`);
+  logger.info(`✅ Server running and accessible on http://0.0.0.0:${PORT}`);
 });
