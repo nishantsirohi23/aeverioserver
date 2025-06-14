@@ -18,23 +18,22 @@ const hotelSchema = new mongoose.Schema({
 });
 
 const itinerarySchema = new mongoose.Schema({
-    day: Number,
-    title: String,
-    highlight: String,
-    icon: String, // store icon name or type as string (e.g., "plane", "heart")
-    timeline: [
-      {
-        time: String,
-        activity: String,
-        type: {
-          type: String,
-          enum: ['flight', 'arrival', 'transport', 'meal', 'hotel', 'entertainment', 'activity', 'leisure', 'shopping', 'sightseeing', 'temple', 'rest'],
-          default: 'activity'
-        }
+  day: Number,
+  title: String,
+  highlight: String,
+  icon: String,
+  timeline: [
+    {
+      time: String,
+      activity: String,
+      type: {
+        type: String,
+       
+        default: 'activity'
       }
-    ]
-  });
-  
+    }
+  ]
+});
 
 const packageSchema = new mongoose.Schema({
   title: String,
@@ -53,6 +52,7 @@ const packageSchema = new mongoose.Schema({
   },
   hotelDetails: [hotelSchema],
   itinerary: [itinerarySchema],
+  imageUrls: [String], // ✅ Added field for image URLs
   landPackageCost: String,
   inclusions: [String],
   exclusions: [String],

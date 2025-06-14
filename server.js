@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const connectDB = require('./src/config/db');
 const contactRoutes = require('./src/routes/contactRoutes');
+const queryformRoutes = require('./src/routes/queryformRoutes');
 const packageRoutes = require('./src/routes/packageRoutes');
+const messageRoutes = require('./src/routes/messageRoutes');
 
 const { logger } = require('./src/utils/logger');
 const cors = require('cors');
@@ -33,7 +35,9 @@ connectDB();
 
 // === Routes ===
 app.use('/api/contacts', contactRoutes);
+app.use('/api/queryform', queryformRoutes);
 app.use('/api/packages', packageRoutes);
+app.use('/api/messages', messageRoutes);
 
 app.get('/health', (req, res) => {
   logger.info('✅ Health check endpoint hit');

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createPackage, getAllPackages } = require('../controllers/packageController');
+const { createPackage, getAllPackages, editPackageDetails } = require('../controllers/packageController');
 const { logger } = require('../utils/logger');
 
 // Middleware for logging
@@ -27,5 +27,31 @@ router.get('/:id', async (req, res) => {
   
 // GET /api/packages - Get all packages
 router.get('/', getAllPackages);
+// GET /api/packages/search?name=some-name - Search packages by name
+// This should come BEFORE `/:id`
+router.get('/search/name', async (req, res) => {
+  const { name } = req.query;
+
+  if (!name || name.trim() === '') {
+    return res.status(400).json({ success: false, error: 'Package name query is required' });
+  }
+
+  try {
+    const packages = await require('../models/Package').find({
+      title: { $regex: name, $options: 'i' }, // assuming 'title' is the correct field
+    });
+    res.status(200).json({
+      success: true,
+      count: packages.length,
+      data: packages,
+    });
+  } catch (error) {
+    logger.error('Error searching packages by name', { error: error.message });
+    res.status(500).json({ success: false, error: 'Server Error' });
+  }
+});
+
+// Route for editing package details
+router.put('/edit/:id', editPackageDetails);
 
 module.exports = router;
