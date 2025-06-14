@@ -43,7 +43,7 @@ app.use('/api/reviews', reviewRoutes);
 
 app.get('/health', (req, res) => {
   logger.info('✅ Health check endpoint hit');
-  res.status(200).json({ status: 'UP', message: 'Server is healthy 🚀' });
+  res.status(200).json({ status: 'UP', message: 'Server is healthy sfdsdf🚀' });
 });
 
 app.get('/', (req, res) => {
