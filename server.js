@@ -41,7 +41,7 @@ app.use('/api/messages', messageRoutes);
 
 app.get('/health', (req, res) => {
   logger.info('✅ Health check endpoint hit');
-  res.status(200).json({ status: 'UP', message: 'Server is healthy 🚀 asdf adfasfdasdfasdf' });
+  res.status(200).json({ status: 'UP', message: 'Server is healthy 🚀' });
 });
 
 app.get('/', (req, res) => {
