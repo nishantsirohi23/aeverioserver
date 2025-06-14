@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createPackage, getAllPackages, editPackageDetails } = require('../controllers/packageController');
+const { createPackage, getAllPackages } = require('../controllers/packageController');
 const { logger } = require('../utils/logger');
 
 // Middleware for logging
@@ -51,7 +51,6 @@ router.get('/search/name', async (req, res) => {
   }
 });
 
-// Route for editing package details
-router.put('/edit/:id', editPackageDetails);
+
 
 module.exports = router;
