@@ -1,4 +1,4 @@
-const RequestReview = require('../models/RequestReview'); // Assuming you have a Mongoose model named RequestReview
+const RequestReview = require('../models/requestReviewModel.js'); // Assuming you have a Mongoose model named RequestReview
 
 // Controller to create a new review request
 exports.createRequestReview = async (req, res) => {
