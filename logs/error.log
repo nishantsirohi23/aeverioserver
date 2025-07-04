@@ -67,3 +67,7 @@ Tropi"... is not valid JSON
 {
   "error": "$regex has to be a string"
 }
+2025-06-16 03:38:13 [[31merror[39m]: 	❌ Error: Unexpected token ']', ..."6",
+   
+  ]
+}" is not valid JSON

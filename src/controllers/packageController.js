@@ -68,3 +68,40 @@ exports.editPackageDetails = async (req, res) => {
   }
 };
 
+exports.updatePackageImages = async (req, res) => {
+  try {
+    const { id } = req.params; // Package ID from the URL
+    const { imageUrls } = req.body; // Array of image URLs from the request body
+
+    if (!Array.isArray(imageUrls) || imageUrls.length !== 4) {
+      return res.status(400).json({
+        success: false,
+        message: 'imageUrls must be an array of exactly 4 strings.',
+      });
+    }
+
+    // Find the package by ID and update the imageUrls field
+    const updatedPackage = await Package.findByIdAndUpdate(
+      id,
+      { imageUrls },
+      { new: true }
+    );
+
+    if (!updatedPackage) {
+      return res.status(404).json({ success: false, message: 'Package not found' });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'Package image URLs updated successfully',
+      data: updatedPackage,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error updating package image URLs',
+      error: error.message,
+    });
+  }
+};
+

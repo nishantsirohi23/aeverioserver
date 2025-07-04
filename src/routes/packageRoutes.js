@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createPackage, getAllPackages } = require('../controllers/packageController');
+const { createPackage, getAllPackages, updatePackageImages } = require('../controllers/packageController');
 const { logger } = require('../utils/logger');
 
 // Middleware for logging
@@ -51,6 +51,7 @@ router.get('/search/name', async (req, res) => {
   }
 });
 
-
+// PATCH /api/packages/:id/images - Update image URLs of a package
+router.patch('/:id/images', updatePackageImages);
 
 module.exports = router;
