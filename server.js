@@ -9,6 +9,7 @@ const packageRoutes = require('./src/routes/packageRoutes');
 const messageRoutes = require('./src/routes/messageRoutes');
 const reviewRoutes = require('./src/routes/reviewRoutes');
 const requestReviewRoutes = require('./src/routes/requestReviewRoutes');
+const enquiryRoutes = require('./src/routes/enquiryRoutes');
 
 const { logger } = require('./src/utils/logger');
 const cors = require('cors');
@@ -42,6 +43,7 @@ app.use('/api/packages', packageRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/request-reviews', requestReviewRoutes);
+app.use('/api/enquiries', enquiryRoutes);
 
 app.get('/health', (req, res) => {
   logger.info('✅ Health check endpoint hit');
